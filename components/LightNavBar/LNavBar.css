@@ -1,0 +1,9 @@
+
+.gpt3__navbar-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0rem; /* Adjust this value to control the space between links */
+   }
+   
+   

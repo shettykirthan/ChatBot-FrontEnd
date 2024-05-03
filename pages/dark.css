@@ -1,0 +1,47 @@
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+  }
+  html {
+    font-size: 62.5%;
+  }
+
+
+  .Dark-mode {
+    background-color: #181616;
+    color: white;
+    height: 100vh; /* Set the height of .Dark-mode to 50% of the viewport height */
+    width: 250vh;
+  }
+  
+  .sideBar{
+    flex: 3;
+    border-right:1px solid pink ;
+  }
+  .main{
+    flex: 9;
+  }
+
+
+  .upperSideTop 
+    {
+      width: 25px;
+      
+      position: absolute;
+      left: 60px;
+      
+    }
+.container {
+  height: 100vh; /* Set the height of the parent to 100% of the viewport height */
+}
+
+
+
+.Signupbg{
+  background-color: #2e2d2d;
+    color: white;
+    height: 100vh; /* Set the height of .Dark-mode to 50% of the viewport height */
+    width: 250vh;
+}

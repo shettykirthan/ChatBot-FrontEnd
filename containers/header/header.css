@@ -1,0 +1,43 @@
+.gpt3__header {
+    display: flex;
+  }
+  
+  .gpt3__header-content {
+    flex: 1;
+  }
+  
+  .gpt3__header-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 0vh;
+    left:0vh;
+  }
+  
+  .header-text {
+    padding-right: 20px; /* Adjust as needed */
+  }
+  
+  .button-container {
+    padding-right: 20px; /* Adjust as needed */
+  }
+  
+  .Lbutton {
+    width: 16%;
+    height: 10%; 
+    background: #313030; 
+    border-radius: 30px;
+  }
+  
+  @media screen and (max-width:1050px){
+    .gpt3__header-image {
+      flex-direction: column;
+      
+    }
+    .gpt3__header-content {
+      margin: 0 0 3rem;
+    }
+  }
+  

@@ -1,0 +1,10 @@
+<svg width="77" height="74" viewBox="0 0 77 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 446">
+<path id="Vector" d="M19.75 61H34.75L51.4375 72.1001C53.9125 73.7501 57.25 71.9875 57.25 68.9875V61C68.5 61 76 53.5 76 42.25V19.75C76 8.5 68.5 1 57.25 1H19.75C8.5 1 1 8.5 1 19.75V42.25C1 53.5 8.5 61 19.75 61Z" fill="black" stroke="black" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="Union">
+<path d="M47.6164 14.1756L49.2317 9H52.0387L53.654 14.1756L58.5 15.9008V18.8986L53.654 20.6238L52.0387 25.7994H49.2317L47.6164 20.6238L42.7703 18.8986V15.9008L47.6164 14.1756Z" fill="white"/>
+<path d="M53.1008 30.5665V49H48.1695V30.5665H53.1008Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M26.8102 14.7664H35.0095L43.3194 49H38.2251L36.3074 41.0999H25.5121L23.5944 49H18.5L26.8102 14.7664ZM26.7906 35.8332H35.0289L31.1936 20.0331H30.6261L26.7906 35.8332Z" fill="white"/>
+</g>
+</g>
+</svg>
