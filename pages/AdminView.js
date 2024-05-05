@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Navbar } from "../components";
+import { Navbar } from "../components"; // Assuming Navbar is correctly imported
 import Cookies from "js-cookie";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode"; // Import jwtDecode correctly
 
 const AdminView = () => {
   const [data, setData] = useState([]);
@@ -30,7 +31,7 @@ const AdminView = () => {
         const answerJson = JSON.parse(question.answer);
 
         return {
-          question: questionJson.question || questionJson.quesiton, // Handle the typo in the question field
+          question: questionJson.question || questionJson.question, // Handle the typo in the question field
           answer: answerJson.optimal_answer,
         };
       });
@@ -40,47 +41,63 @@ const AdminView = () => {
       console.error("Error fetching data:", error);
     }
   };
+  
+  const token = Cookies.get("token");
+  let role = null;
+
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    role = decodedToken.role;
+  }
 
   return (
-    <div className="Dark-mode">
-      <Navbar />
-      <div
-        style={{
-          width: "80%",
-          height: "90%",
-          position: "absolute",
-          top: "15%",
-          left: "10%",
-        }}>
-        <h2 style={headingStyle}>Questions & Answers</h2>
-        <div
-          className="scrollable-div"
-          style={{
-            maxHeight: "80%",
-            overflowY: "scroll",
-            scrollbarWidth: "thin",
-            scrollbarColor: "#ccc grey",
-          }}>
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
-            <thead>
-              <tr>
-                <th style={tableHeaderStyle}>S.No</th>
-                <th style={tableHeaderStyle}>Question</th>
-                <th style={tableHeaderStyle}>Answer</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item, index) => (
-                <tr key={index}>
-                  <td style={tableCellStyle}>{index + 1}</td>
-                  <td style={tableCellStyle}>{item.question}</td>
-                  <td style={tableCellStyle}>{item.answer}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div>
+      {role === "ADMIN" && (
+        <>
+          <div className="Dark-mode">
+            <Navbar /> {/* Ensure Navbar is imported and rendered correctly */}
+            <div
+              style={{
+                width: "80%",
+                height: "90%",
+                position: "absolute",
+                top: "15%",
+                left: "10%",
+              }}
+            >
+              <h2 style={headingStyle}>Questions & Answers</h2>
+              <div
+                className="scrollable-div"
+                style={{
+                  maxHeight: "80%",
+                  overflowY: "scroll",
+                  scrollbarWidth: "thin",
+                  scrollbarColor: "#ccc grey",
+                }}
+              >
+                <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <thead>
+                    <tr>
+                      <th style={tableHeaderStyle}>S.No</th>
+                      <th style={tableHeaderStyle}>Question</th>
+                      <th style={tableHeaderStyle}>Answer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((item, index) => (
+                      <tr key={index}>
+                        <td style={tableCellStyle}>{index + 1}</td>
+                        <td style={tableCellStyle}>{item.question}</td>
+                        <td style={tableCellStyle}>{item.answer}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

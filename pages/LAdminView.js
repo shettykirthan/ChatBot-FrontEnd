@@ -3,7 +3,7 @@ import { LNavBar } from "../components";
 import Cookies from "js-cookie";
 import axios from "axios";
 import "./light.css";
-
+import { jwtDecode } from "jwt-decode";
 const LAdminView = () => {
   const [data, setData] = useState([]);
 
@@ -39,47 +39,60 @@ const LAdminView = () => {
       console.error("Error fetching data:", error);
     }
   };
+  const token = Cookies.get("token");
+  let role = null;
+
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    role = decodedToken.role;
+  }
 
   return (
-    <div className="Light-mode">
-      <LNavBar />
-      <div
-        style={{
-          width: "80%",
-          height: "98%",
-          position: "absolute",
-          top: "15%",
-          left: "10%",
-        }}>
-        <h2 style={headingStyle}>Questions & Answers</h2>
-        <div
-          className="scrollable-div"
-          style={{
-            maxHeight: "80%",
-            overflowY: "scroll",
-            scrollbarWidth: "thin",
-            scrollbarColor: "#ccc #6d6d6d",
-          }}>
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
-            <thead>
-              <tr>
-                <th style={tableHeaderStyle}>S.No</th>
-                <th style={tableHeaderStyle}>Question</th>
-                <th style={tableHeaderStyle}>Answer</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item, index) => (
-                <tr key={index}>
-                  <td style={tableCellStyle}>{index + 1}</td>
-                  <td style={tableCellStyle}>{item.question}</td>
-                  <td style={tableCellStyle}>{item.answer}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div>
+      {role === "ADMIN" && (
+        <>
+        <div className="Light-mode">
+          <LNavBar />
+          <div
+            style={{
+              width: "80%",
+              height: "98%",
+              position: "absolute",
+              top: "15%",
+              left: "10%",
+            }}>
+            <h2 style={headingStyle}>Questions & Answers</h2>
+            <div
+              className="scrollable-div"
+              style={{
+                maxHeight: "80%",
+                overflowY: "scroll",
+                scrollbarWidth: "thin",
+                scrollbarColor: "#ccc #6d6d6d",
+              }}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr>
+                    <th style={tableHeaderStyle}>S.No</th>
+                    <th style={tableHeaderStyle}>Question</th>
+                    <th style={tableHeaderStyle}>Answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((item, index) => (
+                    <tr key={index}>
+                      <td style={tableCellStyle}>{index + 1}</td>
+                      <td style={tableCellStyle}>{item.question}</td>
+                      <td style={tableCellStyle}>{item.answer}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };

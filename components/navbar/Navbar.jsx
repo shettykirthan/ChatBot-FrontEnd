@@ -174,7 +174,7 @@ const Navbar = () => {
                 width: "2.8%",
                 height: "3.3%",
                 background: "#999",
-                borderRadius: 15,
+                borderRadius: "7vh",
               }}>
               <div
                 style={{
@@ -184,7 +184,7 @@ const Navbar = () => {
                   width: "45%",
                   height: "80%",
                   background: "#333",
-                  borderRadius: 50.5,
+                  borderRadius: "10vh",
                 }}
               />
             </div>
